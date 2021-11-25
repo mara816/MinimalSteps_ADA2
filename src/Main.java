@@ -39,7 +39,7 @@ public class Main {
         //output: 6 - PASSES
 
 //        System.out.println("----------Testing the limits----------");
-//        bfs.minimum_steps(1000, 1000, 1, 1, 999, 999);
+//        bfs.minimum_steps(3000, 3000, 1, 1, 2999, 2999);
 
     }
 }

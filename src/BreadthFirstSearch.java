@@ -3,6 +3,7 @@ import java.util.Queue;
 
 public class BreadthFirstSearch {
     Queue<Node> queue = new LinkedList<>();
+    long start = System.currentTimeMillis();
     int final_count;
 
     // Bread First Search
@@ -45,9 +46,10 @@ public class BreadthFirstSearch {
             // Clear the queue
             // Return minimum steps taken
             if (currentNode.x == knight_end_x_position && currentNode.y == knight_end_y_position) { // O(N)
+
                 final_count = count; // O(N)
                 cli(board_height, board_width, knight_start_x_position, knight_start_y_position,
-                        knight_end_x_position, knight_end_y_position, currentNode.distance, tree); // O(N)
+                        knight_end_x_position, knight_end_y_position ,currentNode.distance, tree); // O(N)
                 queue.clear(); // O(N)
                 return currentNode.distance; // O(N)
 
@@ -86,9 +88,10 @@ public class BreadthFirstSearch {
                 + "Start position: [x=" + start_x + ", y=" + start_y + "]\n"
                 + "Target position: [x=" + end_x + ", y=" + end_y + "]\n"
                 + "Nodes in tree: " + final_count + "\n"
-                + "Tree: " + tree + "\n\n"
+                + "Execution time: " + (System.currentTimeMillis() - start)/1000.0 + " seconds" + "\n"
+                // To print the tree. Affects the executing time
+              //  + "Tree: " + tree + "\n\n"
                 + "Shortest path: " + distance + " steps";
-
         System.out.println(result);
     }
 }
