@@ -1,14 +1,16 @@
-import java.util.ArrayList;
+import java.util.LinkedList;
 
 public class Node {
     int x;
     int y;
-    ArrayList<Node> childNode = new ArrayList<>();
+    boolean visited;
+    LinkedList<Node> childNode = new LinkedList<>();
 
-    public Node(int x, int y, int distance) {
+    public Node(int x, int y, int distance, boolean visited) {
         this.x = x;
         this.y = y;
         this.distance = distance;
+        this.visited = visited;
     }
     int distance;
 
