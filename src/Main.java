@@ -34,12 +34,12 @@ public class Main {
         //output: 0 - PASSES
 
         System.out.println("----------Test 7----------");
-       bfs.minimum_steps(100, 100, 50, 50, 57, 57);
+        bfs.minimum_steps(100, 100, 50, 50, 57, 57);
         System.out.println("Expected: 6 steps" + "\n");
         //output: 6 - PASSES
 
 //        System.out.println("----------Testing the limits----------");
-//        bfs.minimum_steps(3000, 3000, 1, 1, 2999, 2999);
+//        bfs.minimum_steps(3500, 3500, 1, 1, 3499, 3499);
 
     }
 }
