@@ -19,7 +19,7 @@ public class Main {
         //output: 5 - PASSES
 
         System.out.println("----------Test 4----------");
-         bfs.minimum_steps(20, 10, 0, 4, 9, 15);
+        bfs.minimum_steps(20, 10, 0, 4, 9, 15);
         System.out.println("Expected: 8 steps" + "\n");
         //output: 8 - PASSES
 

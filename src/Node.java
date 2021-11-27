@@ -1,7 +1,10 @@
+import java.util.ArrayList;
+
 public class Node {
-    int x;
-    int y;
+    int x, y, distance;
     boolean visited;
+    // List to store all child nodes
+    ArrayList<Node> childNode = new ArrayList<>();
 
     public Node(int x, int y, int distance, boolean visited) {
         this.x = x;
@@ -9,14 +12,12 @@ public class Node {
         this.distance = distance;
         this.visited = visited;
     }
-    int distance;
 
     @Override
     public String toString() {
         return "Node{" +
                 "x=" + x +
-                ", y=" + y +
-                ", distance=" + distance +
-                '}';
+                ", y=" + y + ", distance=" + distance +", childNode={" +  childNode +
+                "}, ";
     }
 }
