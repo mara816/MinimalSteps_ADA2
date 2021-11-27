@@ -1,8 +1,4 @@
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class BreadthFirstSearch {
-    private final Queue<Tree<Node>> queue = new LinkedList<>();
     private final long start = System.currentTimeMillis();
     private int final_count;
     private Tree<Node> tree;
@@ -30,8 +26,8 @@ public class BreadthFirstSearch {
         // Instantiating the tree
         tree = new Tree<>(root); // O(1)
 
-        // Adding root node to the queue
-        queue.add(tree.addChild(root)); // O(1)
+        // Adding root node to the tree
+        tree.addChild(root); // O(1)
 
         // Possible movements for the knight in x and y direction
         int[] dx = {-2, -1, 1, 2, -2, -1, 1, 2};
@@ -39,8 +35,8 @@ public class BreadthFirstSearch {
 
         // While the queue is not empty
         // Poll the queue - returns and removes the head
-        while (!queue.isEmpty()) { // O(N)
-            Node currentNode = queue.poll().root; // O(1)
+        while (!tree.children.isEmpty()) { // O(N)
+            Node currentNode = tree.children.poll().root; // O(1)
 
             // When current position is the end position:
             // Save the amount of nodes in tree in the variable final_count
@@ -51,7 +47,7 @@ public class BreadthFirstSearch {
                 final_count = count; // O(1)
                 cli(board_height, board_width, knight_start_x_position, knight_start_y_position,
                         knight_end_x_position, knight_end_y_position, currentNode.distance); // O(1)
-                queue.clear(); // O(1)
+                tree.children.clear(); // O(1)
 
                 // If current position is not the end position
             } else {
@@ -70,7 +66,7 @@ public class BreadthFirstSearch {
                     if (newX >= 0 && newY >= 0 && newX <= board_width && newY <= board_height && !visit[newX][newY]) { // O(N)
                         Node nextNode = new Node(newX, newY, currentNode.distance + 1, visit[newX][newY] = true); // O(1)
                         count++; // O(1)
-                        queue.add(tree.addChild(nextNode)); // O(1)
+                        tree.addChild(nextNode); // O(1)
                     }
                 }
             }
