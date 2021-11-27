@@ -15,15 +15,13 @@ public class Tree<Node> {
     // Add a child node to the tree:
     // Instantiate a new child node
     // Add to children list
-    public Tree<Node> addChild(Node root) {
+    public void addChild(Node root) {
         Tree<Node> newChild = new Tree<>(root);
         children.add(newChild.root);
-        return newChild;
     }
 
     @Override
     public String toString() {
         return "{" + root + "}";
     }
-
 }

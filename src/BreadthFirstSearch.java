@@ -1,7 +1,8 @@
 public class BreadthFirstSearch {
+    // Tree containing nodes
+    Tree<Node> tree;
     private final long start = System.currentTimeMillis();
     private int final_count;
-    Tree<Node> tree;
 
     // Breadth First Search
     // Method for finding the minimum amount of knight steps between two given nodes in an arbitrary size chessboard
@@ -11,7 +12,7 @@ public class BreadthFirstSearch {
         // To count the amount of nodes added to tree
         int count = 0; // O(1)
 
-        // Variable to set if the node has been visited
+        // Set true if the node has been visited
         boolean[][] visit = new boolean[board_width + 1][board_height + 1]; // O(1)
 
         // Make all possible nodes on board unvisited
@@ -28,13 +29,12 @@ public class BreadthFirstSearch {
 
         // Adding root node to the tree
         tree.children.add(root); // O(1)
-        //root.setLst(tree.children);
 
-        // Possible movements for the knight in x and y direction
+        // Possible moves for the knight in x and y direction
         int[] dx = {-2, -1, 1, 2, -2, -1, 1, 2};
         int[] dy = {-1, -2, -2, -1, 1, 2, 2, 1};
 
-        // While the queue is not empty
+        // While the tree is not empty
         // Poll the tree - returns and removes the head
         while (!tree.children.isEmpty()) { // O(N)
             Node currentNode = tree.children.poll(); // O(1)
@@ -43,7 +43,6 @@ public class BreadthFirstSearch {
             // Save the amount of nodes in tree in the variable final_count
             // Print result
             // Clear the tree
-            // Return minimum steps taken/amount of steps in the shortest path
             if (currentNode.x == knight_end_x_position && currentNode.y == knight_end_y_position) { // O(N)
                 final_count = count; // O(1)
                 cli(board_height, board_width, knight_start_x_position, knight_start_y_position,
@@ -54,12 +53,12 @@ public class BreadthFirstSearch {
             } else { // O(N)
 
                 // Loop through possible moves
-                // Create a new node(x,y) for each possible move
+                // Create a new Node for each possible move
                 for (int i = 0; i < dx.length; i++) { // O(N*m)
                     int newX = currentNode.x + dx[i]; // O(1)
                     int newY = currentNode.y + dy[i]; // O(1)
 
-                    // If moves is inside board and are not yet visited:
+                    // If move is inside board and are not yet visited:
                     // Instantiate new visited node
                     // Count + 1, to count the amount of nodes in tree
                     // Add new child node to tree
@@ -67,6 +66,8 @@ public class BreadthFirstSearch {
                         Node nextNode = new Node(newX, newY, currentNode.distance + 1, visit[newX][newY] = true); // O(1)
                         count++; // O(1)
                         tree.addChild(nextNode); // O(1)
+
+                        // Adds child node to childNode list, only for showing child nodes in Node toString
                         currentNode.childNode.add(nextNode); // O(1)
                     }
                 }

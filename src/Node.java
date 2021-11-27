@@ -1,9 +1,12 @@
 import java.util.ArrayList;
 
 public class Node {
+    // x and y coordinates of node
+    // Distance for steps taken
     int x, y, distance;
+    // Has the node been visited before?
     boolean visited;
-    // List to store all child nodes
+    // List to store child nodes to the node
     ArrayList<Node> childNode = new ArrayList<>();
 
     public Node(int x, int y, int distance, boolean visited) {
@@ -17,7 +20,7 @@ public class Node {
     public String toString() {
         return "Node{" +
                 "x=" + x +
-                ", y=" + y + ", distance=" + distance +", childNode={" +  childNode +
+                ", y=" + y + ", distance=" + distance + ", childNode={" + childNode +
                 "}, ";
     }
 }
